@@ -1,4 +1,7 @@
 # My Custom Docker Files
+[![Docker Push Gitlab Runner 4 LaTeX](https://github.com/dfuchss/dockerfiles/actions/workflows/build-gitlab-runner-latex.yml/badge.svg)](https://github.com/dfuchss/dockerfiles/actions/workflows/build-gitlab-runner-latex.yml)
+[![Docker Push Default Development](https://github.com/dfuchss/dockerfiles/actions/workflows/build-development.yml/badge.svg)](https://github.com/dfuchss/dockerfiles/actions/workflows/build-development.yml)
+
 This repository contains my custom docker files
 
 ## gitlab-runner for LaTeX

@@ -11,5 +11,5 @@ Instead of using `gitlab/gitlab-runner` simply use `ghcr.io/dfuchss/gitlab-runne
 
 ## develop
 Ubuntu image with preinstalled packages
-* ```docker build --file=development/Dockerfile -t develop /tmp```
+* ```docker run -it ghcr.io/dfuchss/default-development```
 

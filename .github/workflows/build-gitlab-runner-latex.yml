@@ -1,6 +1,8 @@
 name: Docker Push Gitlab Runner 4 LaTeX
 
 on:
+  schedule:
+    - cron: "0 0 1 * *"
   workflow_dispatch:
   push:
     # Publish `v1.2.3` tags as releases.

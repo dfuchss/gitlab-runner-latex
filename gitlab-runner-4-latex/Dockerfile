@@ -18,4 +18,7 @@ RUN echo "Installing TeX" \
   && zcat install-tl-unx.tar.gz | tar xf - \
   && rm install-tl-unx.tar.gz \
   && cd install-tl-* \
-  && perl ./install-tl --no-interaction
+  && echo "tlpdbopt_sys_bin /usr/local/bin"   >> texlive.profile \
+  && echo "tlpdbopt_sys_info /usr/local/info" >> texlive.profile \
+  && echo "tlpdbopt_sys_man /usr/local/man"   >> texlive.profile \
+  && perl ./install-tl --profile texlive.profile --no-interaction

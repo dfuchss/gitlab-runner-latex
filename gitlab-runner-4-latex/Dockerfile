@@ -1,4 +1,21 @@
 FROM gitlab/gitlab-runner:latest
-RUN apt update
-# Install TexLive
-RUN apt install latexmk texlive texlive-bibtex-extra biber texlive-fonts-extra texlive-lang-german texlive-latex-extra texlive-science -y
+RUN echo "Installing needed dependencies" \
+  && apt-get update && apt-get install -y --no-install-recommends locales \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
+
+RUN echo "Fixing locales" \
+  && sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen \
+  && locale-gen
+
+ENV LC_ALL en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+
+RUN echo "Installing TeX" \
+  && cd /tmp \
+  && wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz \
+  && zcat install-tl-unx.tar.gz | tar xf - \
+  && rm install-tl-unx.tar.gz \
+  && cd install-tl-* \
+  && perl ./install-tl --no-interaction

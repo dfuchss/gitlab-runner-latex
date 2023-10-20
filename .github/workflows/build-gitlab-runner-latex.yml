@@ -24,7 +24,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: mkdir build-dir && docker build build-dir --file gitlab-runner-4-latex/Dockerfile --tag $IMAGE_NAME
+        run: mkdir build-dir && docker build build-dir --file gitlab-runner-latex/Dockerfile --tag $IMAGE_NAME
 
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.repository_owner }} --password-stdin

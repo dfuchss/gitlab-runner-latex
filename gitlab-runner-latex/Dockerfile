@@ -1,6 +1,6 @@
 FROM gitlab/gitlab-runner:latest
 RUN echo "Installing needed dependencies" \
-  && apt-get update && apt-get install -y --no-install-recommends locales \
+  && apt-get update && apt-get install -y --no-install-recommends locales inkscape \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 

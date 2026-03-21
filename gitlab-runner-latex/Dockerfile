@@ -1,6 +1,8 @@
+FROM ghcr.io/verapdf/cli AS verapdf
+
 FROM gitlab/gitlab-runner:latest
 RUN echo "Installing needed dependencies" \
-  && apt-get update && apt-get install -y --no-install-recommends locales inkscape \
+  && apt-get update && apt-get install -y --no-install-recommends locales inkscape openjdk-11-jre \
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/*
 
@@ -11,6 +13,10 @@ RUN echo "Fixing locales" \
 ENV LC_ALL en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
+
+# VeraPDF
+COPY --from=verapdf /opt/verapdf/ /opt/verapdf/
+RUN ln -s /opt/verapdf/verapdf /usr/bin/
 
 RUN echo "Installing TeX" \
   && cd /tmp \

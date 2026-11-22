@@ -1,6 +1,6 @@
 FROM ghcr.io/verapdf/cli AS verapdf
 
-FROM gitlab/gitlab-runner:latest
+FROM gitlab/gitlab-runner:v19.6.0
 RUN echo "Installing needed dependencies" \
   && apt-get update && apt-get install -y --no-install-recommends locales inkscape ghostscript openjdk-11-jre \
   && apt-get clean \
